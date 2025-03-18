@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    .container
+      header.dashboard-header
+        h1 Music Event Dashboard
+        p.subtitle Manage your upcoming concerts, festivals, and performances
+      
+      section.intro-section
+        h2 Welcome to the Music Event Manager
+        p This application allows you to keep track of all your music events. Whether you're planning small intimate concerts or large-scale festivals, our integration with HubSpot helps you manage everything in one place.
+        p Use the form to add new events, and view all your upcoming events in the table below.
+      
+      section.action-section
+        a.btn.primary-btn(href="/update-cobj") Add New Event
+        p.helper-text Create a new event using our simple form
+      
+      section.events-section
+        h2 Your Upcoming Events
+        
+        if data && data.length > 0
+          table.events-table
+            thead
+              tr
+                th Event Name
+                th Venue Location
+                th Event Date
+                th Music Genre
+            tbody
+              each event in data
+                tr
+                  td.event-name= event.properties.name
+                  td.event-venue= event.properties.venue
+                  td.event-date= event.properties.date
+                  td.event-genre= event.properties.genre
+        else
+          .no-events
+            p.empty-message No music events found. Get started by adding your first event!
+            p.suggestion Use the "Add New Event" button above to create your first event.
+      
+      footer.dashboard-footer
+        p.footer-text Music Event Manager - HubSpot Integration Practicum
+        a(href="/") Refresh Dashboard
