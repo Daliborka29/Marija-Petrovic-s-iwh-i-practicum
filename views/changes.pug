@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    .container
+      header.dashboard-header
+        h1 Add New Music Event
+        p.subtitle Create a new concert, festival, or performance record
+      
+      section.intro-section
+        p Enter the details of your upcoming music event below. All fields are required to ensure proper tracking and organization.
+        a(href="/") Return to the dashboard
+      
+      section.form-section
+        form(method="POST", action="/change-cobj")
+          .form-group
+            label(for="name") Event Name:
+            input#name(type="text", name="name", placeholder="Enter event name", required)
+          
+          .form-group
+            label(for="venue") Venue:
+            input#venue(type="text", name="venue", placeholder="Enter venue name and location", required)
+          
+          .form-group
+            label(for="date") Event Date:
+            input#date(type="date", name="date", required)
+          
+          .form-group
+            label(for="genre") Music Genre:
+            input#genre(type="text", name="genre", placeholder="Enter music genre", required)
+          
+          button.btn(type="submit") Create Event
+      
+      footer.dashboard-footer
+        p.footer-text Music Event Manager - HubSpot Integration Practicum
